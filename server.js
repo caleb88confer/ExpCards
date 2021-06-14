@@ -21,9 +21,6 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //set the default view engine =========================
 app.set('view engine', 'ejs');
 //HOME ROUTE ==========================================
-app.get('/', (req, res) => {
-    res.send('welcome home');
-});
 //MOUNTING MIDDLEWARE =================================
 app.use(express.urlencoded({ extended: false}));
 app.use(methodOverride('_method'));
@@ -31,6 +28,10 @@ app.use(methodOverride('_method'));
 // link to controllers -    -   -   -   -   -   -   -   
 
 
+//HOME ROUTE=====================
+app.get('/', (req, res) => {
+    res.render('index.ejs');
+})
 //LISTENER============================================
 app.listen(port, () => {
     console.log('Express is listening on port:', port);
