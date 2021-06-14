@@ -34,14 +34,24 @@ app.use(methodOverride('_method'));
 
 // link to controllers -    -   -   -   -   -   -   -   
 const userController = require('./controllers/users');
-app.use('/user', userController);
+app.use('/users', userController);
 
 const sessionsController = require('./controllers/sessions');
 app.use('/sessions', sessionsController);
 
-//HOME ROUTE=====================
+//HOME ROUTE/DASHBOARD=====================
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    console.log(req.session.currentUser);
+    if(req.session.currentUser) {
+        res.render('dashboard.ejs', {
+            currentUser: req.session.currentUser
+        });
+    } else {
+        res.render('index.ejs', {
+            currentUser: req.session.currentUser
+        });
+
+    }
 })
 //LISTENER============================================
 app.listen(port, () => {
