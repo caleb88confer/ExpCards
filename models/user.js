@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //USER SCHEMA====================================
-const userSchema = Schema({
+const userSchema = new Schema({
     email: { type: String, unique: true, required: true},
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    cards: [],
+    decks: [],
+
 });
 
 //USER MODEL======================================
