@@ -11,7 +11,13 @@ userRouter.get('/new', (req, res) => {
 });
 
 //CREATE ROUTE (REGISTRATION)==========================
-
+userRouter.post('/', (req, res) => {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(12));
+    User.create(req.body, (error, createdUser) => {
+        res.redirect('/');
+        console.log(createdUser);
+    });
+});
 
 
 //EXPORT USER ROUTE==================================

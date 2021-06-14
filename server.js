@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3000;
+const session = require('express-session');
 //CONFIGURE MONGOOSE===================================
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
@@ -23,10 +24,20 @@ app.set('view engine', 'ejs');
 //HOME ROUTE ==========================================
 //MOUNTING MIDDLEWARE =================================
 app.use(express.urlencoded({ extended: false}));
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    }));
 app.use(methodOverride('_method'));
 
 // link to controllers -    -   -   -   -   -   -   -   
+const userController = require('./controllers/users');
+app.use('/user', userController);
 
+const sessionsController = require('./controllers/sessions');
+app.use('/sessions', sessionsController);
 
 //HOME ROUTE=====================
 app.get('/', (req, res) => {
