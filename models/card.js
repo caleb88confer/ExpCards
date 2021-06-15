@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 //CARD SCHEMA===================================
 const cardSchema = new Schema({
-    name: String,
+    title: String,
     type: String,
     time: String,
     stats: { 
