@@ -1,6 +1,8 @@
 const express = require('express')
 const cardRouter = express.Router();
-const Card = require('../models/card.js');
+const User = require('../models/user.js');
+const cardModule = require('../models/card.js');
+const Card = cardModule.Card;
 
 
 //INDEX ROUTE========================================
