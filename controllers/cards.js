@@ -23,10 +23,16 @@ cardRouter.get('/new', (req, res) => {
 });
 
 //CREATE ROUTE=========================================
-cardRouter.post('/', (req, res) => {
-    console.log(req.body);
-    Card.create(req.body, (error, createdCard) => {
-        res.redirect(`/cards`);
+cardRouter.post('/:id/new', (req, res) => {
+    //find the parent document by id
+    User.findById(req.session.currentUser._id, (error, foundUser) => {
+        //push req.body into corresponding array
+        foundUser.cards.push(req.body);
+        //save the parent document to commit changes to database
+        foundUser.save(() => {
+            // then res.redirect 
+            res.redirect('/cards');
+        });
     });
 });
 
