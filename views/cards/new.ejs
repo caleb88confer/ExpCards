@@ -13,7 +13,7 @@
     <nav>
         <a href="/">Dashboard</a>
     </nav>
-    <form action="/cards/<%=currentUser._id%>" method="POST">
+    <form action="/cards/<%=currentUser._id%>/new" method="POST">
         <label for="titleInput">Title</label>
         <input type="text" name="title" id="titleInput">
         <br>
@@ -39,7 +39,7 @@
     <input type="number" name="stats.community" id="statsCommunity" min="0" max="10">
     <br>
     <label for="statsChallenge">Challenge</label>
-    <input type="number" name="stats" id="statsCommunity" min="0" max="10">
+    <input type="number" name="stats.challenge" id="statsCommunity" min="0" max="10">
     <br>
     <label for="flavorText">Flavor Text</label>
     <textarea name="flavorText" id="flavorText" cols="28" rows="3" maxlength="70"></textarea>
