@@ -7,13 +7,10 @@ const Card = cardModule.Card;
 
 //INDEX ROUTE========================================
 cardRouter.get('/', (req, res) => {
-    Card.find({}, (error, cards) => {
-        res.render('cards/index.ejs', {
-            cards,
-            currentUser: req.session.currentUser
-        });
-        console.log(cards);
+    res.render('cards/index.ejs', {
+        currentUser: req.session.currentUser
     });
+ 
 });
 //NEW ROUTE============================================
 cardRouter.get('/new', (req, res) => {
