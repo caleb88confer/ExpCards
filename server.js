@@ -39,6 +39,9 @@ app.use('/users', userController);
 const sessionsController = require('./controllers/sessions');
 app.use('/sessions', sessionsController);
 
+const cardControlller = require('./controllers/cards');
+app.use('/cards', cardControlller);
+
 //HOME ROUTE/DASHBOARD=====================
 app.get('/', (req, res) => {
     console.log(req.session.currentUser);
@@ -48,7 +51,7 @@ app.get('/', (req, res) => {
         });
         //change res.rend back to index.ejs after changes are made.
     } else {
-        res.render('dashboard.ejs', {
+        res.render('index.ejs', {
             currentUser: req.session.currentUser
         });
 
