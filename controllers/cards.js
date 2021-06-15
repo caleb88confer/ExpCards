@@ -7,7 +7,8 @@ const Card = require('../models/card.js');
 cardRouter.get('/:id', (req, res) => {
     Card.find({}, (error, cards) => {
         res.render('cards/index.ejs', {
-            cards
+            cards,
+            currentUser: req.session.currentUser
         });
     });
 });

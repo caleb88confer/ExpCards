@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp Card Index | Your Cards</title>
+</head>
+<body>
+    <header>
+<h1>Exp Cards</h1>
+<a href="/">Back</a>
+<a href="/cards/<%=currentUser._id%>/new">Add New Card</a>
+    </header>
+    <% cards.forEach(card => { %>
+     <div>
+         <a href="/cards/<%=card._id%>/show"><%=card.name%></a>
+     </div>
+    <% }) %>
+
+    
+</body>
+</html>
