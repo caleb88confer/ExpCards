@@ -46,13 +46,15 @@ app.get('/', (req, res) => {
         res.render('dashboard.ejs', {
             currentUser: req.session.currentUser
         });
+        //change res.rend back to index.ejs after changes are made.
     } else {
-        res.render('index.ejs', {
+        res.render('dashboard.ejs', {
             currentUser: req.session.currentUser
         });
 
     }
 })
+// 60c7c50b8206137581d6c9c1
 //LISTENER============================================
 app.listen(port, () => {
     console.log('Express is listening on port:', port);
