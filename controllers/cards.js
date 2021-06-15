@@ -15,7 +15,7 @@ cardRouter.get('/:id', (req, res) => {
 //NEW ROUTE============================================
 cardRouter.get('/:id/new', (req, res) => {
     res.render('cards/new', {
-        userId: req.params.id
+        currentUser: req.session.currentUser
     });
 });
 
