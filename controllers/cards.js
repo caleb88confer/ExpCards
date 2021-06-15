@@ -4,7 +4,7 @@ const Card = require('../models/card.js');
 
 
 //INDEX ROUTE========================================
-cardRouter.get('/:id', (req, res) => {
+cardRouter.get('/', (req, res) => {
     Card.find({}, (error, cards) => {
         res.render('cards/index.ejs', {
             cards,
@@ -14,24 +14,25 @@ cardRouter.get('/:id', (req, res) => {
     });
 });
 //NEW ROUTE============================================
-cardRouter.get('/:id/new', (req, res) => {
+cardRouter.get('/new', (req, res) => {
     res.render('cards/new', {
         currentUser: req.session.currentUser
     });
 });
 
 //CREATE ROUTE=========================================
-cardRouter.post('/:id', (req, res) => {
+cardRouter.post('/', (req, res) => {
     console.log(req.body);
     Card.create(req.body, (error, createdCard) => {
-        res.redirect(`/cards/${req.session.currentUser._id}`);
+        res.redirect(`/cards`);
     });
 });
 
 //SHOW ROUTE===========================================
 cardRouter.get('/:cardId/show', (req, res) => {
+    console.log(req.params.cardId);
     Card.findById(req.params.cardId, (error, foundCard) => {
-        res.render('cards/new.ejs', {
+        res.render('cards/show.ejs', {
             card: foundCard
         });
     });
