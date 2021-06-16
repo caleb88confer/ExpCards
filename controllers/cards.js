@@ -1,14 +1,17 @@
 const express = require('express')
 const cardRouter = express.Router();
 const User = require('../models/user.js');
-const cardModule = require('../models/card.js');
-const Card = cardModule.Card;
+const Card = require('../models/card.js');
 
 
 //INDEX ROUTE========================================
 cardRouter.get('/', (req, res) => {
-    res.render('cards/index.ejs', {
-        currentUser: req.session.currentUser
+    Card.find({ createdBy: req.session.currentUser._id }, (error, cards) => {
+        res.render('cards/index.ejs', {
+            currentUser: req.session.currentUser,
+            cards
+
+        });
     });
  
 });
@@ -20,27 +23,16 @@ cardRouter.get('/new', (req, res) => {
 });
 
 //CREATE ROUTE=========================================
-cardRouter.post('/:id/new', (req, res) => {
-    //find the parent document by id
-    User.findById(req.session.currentUser._id, (error, foundUser) => {
-        //push req.body into corresponding array
-        foundUser.cards.push(req.body);
-        //save the parent document to commit changes to database
-        foundUser.save(() => {
-            // then res.redirect 
-            res.redirect('/cards');
-        });
+cardRouter.post('/', (req, res) => {
+    Card.create(req.body, (error, createdCard) => {
+        res.redirect('/cards');
     });
 });
 
 //SHOW ROUTE===========================================
 cardRouter.get('/:cardId/show', (req, res) => {
-    console.log(req.params.cardId);
-    Card.findById(req.params.cardId, (error, foundCard) => {
-        res.render('cards/show.ejs', {
-            card: foundCard
-        });
-    });
+    res.render('cards/show.ejs');
+
 });
 
 
