@@ -13,7 +13,8 @@
     <nav>
         <a href="/">Dashboard</a>
     </nav>
-    <form action="/cards/<%=currentUser._id%>/new" method="POST">
+    <form action="/cards/" method="POST">
+        <input type="text" name="createdBy" id="createdByInput" value="<%=currentUser._id%>">
         <label for="titleInput">Title</label>
         <input type="text" name="title" id="titleInput">
         <br>

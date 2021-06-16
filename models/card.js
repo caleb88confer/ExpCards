@@ -13,14 +13,14 @@ const cardSchema = new Schema({
         challenge: Number,
     },
     flavorText: String,
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
 
 
 }, { timestamps: true });
 
 const Card = mongoose.model('Card', cardSchema);
 
-module.exports = {
-    Card: Card,
-    cardSchema: cardSchema
-
-};
+module.exports = Card;

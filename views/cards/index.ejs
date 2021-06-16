@@ -12,10 +12,9 @@
 <a href="/">Back</a>
 <a href="/cards/new">Add New Card</a>
     </header>
- <% currentUser.cards.forEach(card => { %>
+ <% cards.forEach(card => { %>
   <p><%=card.title%></p>
  <% }) %>
- 
 
     
 </body>
