@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Card</title>
+</head>
+<body>
+    <header>
+        <h1> Edit Exp Card</h1>
+    </header>
+    <nav>
+        <a href="/">Dashboard</a>
+    </nav>
+    <form action="/cards/<%=card._id%>?_method=PUT" method="POST">
+        <input type="text" name="createdBy" id="createdByInput" value="<%=currentUser._id%>">
+        <label for="titleInput">Title</label>
+        <input type="text" name="title" id="titleInput" value="<%=card.title%>">
+        <br>
+        <label for="typeSelect">Type</label>
+    <select name="type" id="typeSelect">
+        <option value="nature">Nature</option>
+        <option <% if (card.type === "urban") {%>
+        selected <%}%>   value="urban">Urban</option>
+    </select>
+    <br />
+    <label for="timeSelect">Time</label>
+    <select name="time" id="timeSelect">
+        <option value="dawn">Dawn</option>
+        <option <% if (card.time === "dusk") {%>
+            selected <%}%>value="dusk">Dusk</option>
+        <option <% if (card.time === "day") {%>
+            selected <%}%>value="day">Day</option>
+        <option <% if (card.time === "night") {%>
+            selected <%}%>value="night">Night</option>
+    </select>
+    <br />
+    <p>Stats:</p>
+    <label for="statsAdventure">Adventure</label>
+    <input type="number" name="stats.adventure" id="statsAdventure" min="0" max="10" value="<%=card.stats.adventure%>">
+    <br>
+    <label for="statsCommunity">Community</label>
+    <input type="number" name="stats.community" id="statsCommunity" min="0" max="10" value="<%=card.stats.community%>">
+    <br>
+    <label for="statsChallenge">Challenge</label>
+    <input type="number" name="stats.challenge" id="statsChallenge" min="0" max="10" value="<%=card.stats.challenge%>">
+    <br>
+    <label for="flavorText">Flavor Text</label>
+    <textarea name="flavorText" id="flavorText" cols="28" rows="3" maxlength="70" ><%=card.flavorText%></textarea>
+    <br>
+    <input type="submit" value="Edit Card">
+
+    </form>
+    
+</body>
+</html>
