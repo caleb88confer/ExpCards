@@ -13,7 +13,7 @@
 <a href="/cards/new">Add New Card</a>
     </header>
  <% cards.forEach(card => { %>
-  <p><%=card.title%></p>
+  <a href="/cards/<%=card._id%>"><%=card.title%></a>
  <% }) %>
 
     

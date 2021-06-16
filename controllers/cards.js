@@ -22,6 +22,20 @@ cardRouter.get('/new', (req, res) => {
     });
 });
 
+// DELETE ROUTE=============================
+cardRouter.delete('/:id', (req, res) => {
+    Card.findByIdAndRemove(req.params.id, () => {
+        res.redirect('/cards');
+    });
+});
+
+// UPDATE ROUTE=============================
+cardRouter.put('/:id', (req, res) => {
+    Card.findByIdAndUpdate(req.params.id, req.body, () => {
+        res.redirect('/cards');
+    });
+});
+
 //CREATE ROUTE=========================================
 cardRouter.post('/', (req, res) => {
     Card.create(req.body, (error, createdCard) => {
@@ -29,9 +43,23 @@ cardRouter.post('/', (req, res) => {
     });
 });
 
+// EDIT ROUTE==============================
+cardRouter.get('/:id/edit', (req, res) => {
+    Card.findById(req.params.id, (error, card) => {
+        res.render('cards/edit.ejs', {
+            card,
+            currentUser: req.session.currentUser
+        });
+    });
+});
+
 //SHOW ROUTE===========================================
-cardRouter.get('/:cardId/show', (req, res) => {
-    res.render('cards/show.ejs');
+cardRouter.get('/:cardId', (req, res) => {
+    Card.findById(req.params.cardId, (error, card) => {
+        res.render('cards/show.ejs', {
+            card
+        });
+    });
 
 });
 
