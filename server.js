@@ -23,6 +23,9 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.set('view engine', 'ejs');
 //HOME ROUTE ==========================================
 //MOUNTING MIDDLEWARE =================================
+//middleware for css
+app.use(express.static(__dirname + '/public'));
+
 app.use(express.urlencoded({ extended: false}));
 app.use(
     session({

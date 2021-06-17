@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('partials/materialize.ejs'); %>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Exp Cards | Home Page</title>
 </head>
+
 <body>
-    <header>
-        <h1>Exp Cards</h1>
+    <header class="deep-orange lighten-3 z-depth-1">
+        <h1 class="center-align white-text" id="headerTitle">Exp Cards</h1>
     </header>
-    <div class="box">
-        <a class="btn" href="/sessions/new">Login</a>
-        <a class="btn" href="/users/new">Register</a>
+    <div class="container z-depth-1 orange lighten-5" id="btnHolder">
+        <div class="b1">
+            <div class="row">
+                <a class="btn orange lighten-3 waves-effect waves-light col s3 b1 z-depth-3" href="/sessions/new">Login</a>
+            </div>
+            <div class="row">
+                <a class="btn orange lighten-3 waves-effect waves-light col s3 b1 z-depth-3" id="b1"
+                    href="/users/new">Register</a>
+            </div>
+        </div>
     </div>
-    
+
 </body>
+
 </html>
