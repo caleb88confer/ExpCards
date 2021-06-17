@@ -42,6 +42,9 @@ app.use('/sessions', sessionsController);
 const cardControlller = require('./controllers/cards');
 app.use('/cards', cardControlller);
 
+const deckController = require('./controllers/decks');
+app.use('/decks', deckController);
+
 //HOME ROUTE/DASHBOARD=====================
 app.get('/', (req, res) => {
     console.log(req.session.currentUser);

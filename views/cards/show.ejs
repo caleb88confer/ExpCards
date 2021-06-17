@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/materialize.ejs'); %>
     <title></title>
 </head>
 <body>
-    <h1></h1>
+    <header><h2>Exp Cards</h2>
+    </header>
+    <h1><%=card.title%></h1>
+    <nav>
+        <form action="/cards/<%=card._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete this card" />
+        </form>
+        <a href="/cards/<%=card._id%>/edit">Edit this card</a>
+    </nav>
     
 </body>
 </html>
