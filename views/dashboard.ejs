@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,67 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Exp Cards Dashboard</title>
 </head>
+
 <body>
     <header class="deep-orange lighten-3 ">
-        <h1 class="center-align white-text" id="headerTitle">Exp Cards Dashboard</h1>
+        <h1 class="center-align white-text headerTitle">Exp Cards Dashboard</h1>
     </header>
-    <nav>
-       <a href="/cards">Your Cards</a>
-       <a href="/decks">Your Decks</a>
-       <a href="/cards/new">Add New Card</a>
-       <form action="/sessions?_method=DELETE" method="POST">
-        <input type="submit" value="Log Out">
-    </form>
-    </nav>
+    <main>
+        <nav class="nav-wrapper orange lighten-4">
+            <div class="container">
+
+                <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                    <i class="material-icons">menu</i>
+                </a>
+
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a class="btn blue-grey lighten-1" href="/cards">Your Cards</a>
+                    </li>
+                    <li>
+                        <a class="btn blue-grey lighten-1" href="/decks">Your Decks</a>
+                    </li>
+                    <li>
+                        <a class="btn blue-grey lighten-1" href="/cards/new">Add New Card</a>
+                    </li>
+                    <li>
+                        <form action="/sessions?_method=DELETE" method="POST">
+                            <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
+                        </form>
+
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-links">
+            <li>
+                <a class="btn blue-grey lighten-1" href="/cards">Your Cards</a>
+            </li>
+            <li>
+                <a class="btn blue-grey lighten-1" href="/decks">Your Decks</a>
+            </li>
+            <li>
+                <a class="btn blue-grey lighten-1" href="/cards/new">Add New Card</a>
+            </li>
+            <li>
+                <form action="/sessions?_method=DELETE" method="POST">
+                    <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
+                </form>
+
+            </li>
+
+        </ul>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        })
+    </script>
 </body>
+
 </html>

@@ -1,9 +1,24 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+
+}
+nav{
+    /* border: 1px solid greenyellow; */
+}
 header {
     height: 7rem;
     margin-bottom: 5px;
     margin-top: 0px;
 }
-#headerTitle {
+.headerTitle {
     margin-top: 0px;
     padding-top: 10px;
 
@@ -15,7 +30,19 @@ header {
     border: 3px solid rgb(240, 198, 129);
 }
 
+#createdByInput {
+    display: none;
+}
+
 .b1 {
    margin-left: 5rem;
    margin-top: 1.4rem;
+}
+
+.submit {
+    text-decoration: none;
+    border: none;
+    color: white;
+    background-color: rgb(240, 198, 129);
+
 }

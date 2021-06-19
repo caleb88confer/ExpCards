@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('partials/materialize.ejs'); %>
+    <%- include('../partials/materialize.ejs'); %>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Create New Card</title>
 </head>
+
 <body>
-    <header>
-        <h1> Edit Exp Card</h1>
+    <header class=" deep-orange lighten-3 white-text ">
+        <h1 class="center-align headerTitle"> Edit Exp Card</h1>
     </header>
-    <nav>
-        <a href="/">Dashboard</a>
+    <nav class="nav-wrapper orange lighten-4">
+        <div class="container">
+
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a class="btn blue-grey lighten-1" href="/cards">Your Cards</a>
+                </li>
+                <li>
+                    <a class="btn blue-grey lighten-1" href="/decks">Your Decks</a>
+                </li>
+                <li>
+                    <a class="btn blue-grey lighten-1" href="/cards/new">Add New Card</a>
+                </li>
+                <li>
+                    <form action="/sessions?_method=DELETE" method="POST">
+                        <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
+                    </form>
+
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-links">
+        <li>
+            <a class="btn blue-grey lighten-1" href="/cards">Your Cards</a>
+        </li>
+        <li>
+            <a class="btn blue-grey lighten-1" href="/decks">Your Decks</a>
+        </li>
+        <li>
+            <a class="btn blue-grey lighten-1" href="/cards/new">Add New Card</a>
+        </li>
+        <li>
+            <form action="/sessions?_method=DELETE" method="POST">
+                <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
+            </form>
+
+        </li>
+
+    </ul>
+
     </nav>
     <form action="/cards/<%=card._id%>?_method=PUT" method="POST">
         <input type="text" name="createdBy" id="createdByInput" value="<%=currentUser._id%>">
@@ -20,39 +67,49 @@
         <input type="text" name="title" id="titleInput" value="<%=card.title%>">
         <br>
         <label for="typeSelect">Type</label>
-    <select name="type" id="typeSelect">
-        <option value="nature">Nature</option>
-        <option <% if (card.type === "urban") {%>
-        selected <%}%>   value="urban">Urban</option>
+        <select name="type" id="typeSelect">
+            <option value="nature">Nature</option>
+            <option <% if (card.type === "urban") {%> selected <%}%>   value="urban">Urban</option>
     </select>
     <br />
     <label for="timeSelect">Time</label>
     <select name="time" id="timeSelect">
         <option value="dawn">Dawn</option>
-        <option <% if (card.time === "dusk") {%>
-            selected <%}%>value="dusk">Dusk</option>
-        <option <% if (card.time === "day") {%>
-            selected <%}%>value="day">Day</option>
-        <option <% if (card.time === "night") {%>
-            selected <%}%>value="night">Night</option>
+        <option <% if (card.time === "dusk") {%> selected <%}%>value="dusk">Dusk</option>
+        <option <% if (card.time === "day") {%> selected <%}%>value="day">Day</option>
+        <option <% if (card.time === "night") {%> selected <%}%>value="night">Night</option>
     </select>
     <br />
     <p>Stats:</p>
     <label for="statsAdventure">Adventure</label>
     <input type="number" name="stats.adventure" id="statsAdventure" min="0" max="10" value="<%=card.stats.adventure%>">
-    <br>
-    <label for="statsCommunity">Community</label>
-    <input type="number" name="stats.community" id="statsCommunity" min="0" max="10" value="<%=card.stats.community%>">
-    <br>
-    <label for="statsChallenge">Challenge</label>
-    <input type="number" name="stats.challenge" id="statsChallenge" min="0" max="10" value="<%=card.stats.challenge%>">
-    <br>
-    <label for="flavorText">Flavor Text</label>
-    <textarea name="flavorText" id="flavorText" cols="28" rows="3" maxlength="70" ><%=card.flavorText%></textarea>
-    <br>
-    <input type="submit" value="Edit Card">
+                <br>
+                <label for="statsCommunity">Community</label>
+                <input type="number" name="stats.community" id="statsCommunity" min="0" max="10"
+                    value="<%=card.stats.community%>">
+                <br>
+                <label for="statsChallenge">Challenge</label>
+                <input type="number" name="stats.challenge" id="statsChallenge" min="0" max="10"
+                    value="<%=card.stats.challenge%>">
+                <br>
+                <label for="flavorText">Flavor Text</label>
+                <textarea name="flavorText" id="flavorText" cols="28" rows="3"
+                    maxlength="70"><%=card.flavorText%></textarea>
+                <br>
+                <input type="submit" value="Edit Card">
 
     </form>
-    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    })
+</script>
+
 </body>
+
 </html>
