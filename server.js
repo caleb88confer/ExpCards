@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override');
+const Card = require('./models/card.js');
 const app = express();
 const port = process.env.PORT || 3000;
 const session = require('express-session');
@@ -52,19 +53,17 @@ app.use('/decks', deckController);
 
 //HOME ROUTE/DASHBOARD=====================
 app.get('/', (req, res) => {
-    console.log(req.session.currentUser);
     if(req.session.currentUser) {
-        res.render('dashboard.ejs', {
-            currentUser: req.session.currentUser
+        Card.find({ createdBy: req.session.currentUser._id }, (error, cards) => {
+            res.render('dashboard.ejs', {
+                currentUser: req.session.currentUser,
+                cards
+            });
         });
-        //change res.rend back to index.ejs after changes are made.
     } else {
-        res.render('index.ejs', {
-            currentUser: req.session.currentUser
-        });
-
+        res.render('index.ejs');
     }
-})
+});
 //LISTENER============================================
 app.listen(port, () => {
     console.log('Express is listening on port:', port);

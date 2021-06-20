@@ -37,7 +37,7 @@
                         <form action="/sessions?_method=DELETE" method="POST">
                             <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
 
-                        </li>
+                    </li>
                     </form>
 
                 </ul>
@@ -55,58 +55,59 @@
                 <a class="btn blue-grey lighten-1" href="/cards/new">Add New Card</a>
             </li>
             <li>
-                <form  action="/sessions?_method=DELETE" method="POST">
+                <form action="/sessions?_method=DELETE" method="POST">
                     <input class="btn blue-grey lighten-1" type="submit" value="Log Out">
 
             </li>
             </form>
 
         </ul>
-        
+
         <div class="container">
 
 
             <div class="row">
 
                 <% cards.forEach(card => { %>
-                    
-                    <div class="col s12 l6">
-                        <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">
-                                    <%=card.title%>
-                                </span>
-                                <div class="card-image">
-                                    <a href="/cards/<%=card._id%>">
-                                        <img src="<%=card.coverPhoto%>" alt="<%=card.title%>">
-                                     </a>
-                                    <p class="halfway-fab btn-floating"> <i class="material-icons"> <% if (card.type === "nature") { %>
+
+                <div class="col s12 m6 l4">
+                    <div class="card  <%=card.time%>Card">
+                        <div class="card-texture">
+                            <div class="card-image card-image-<%=card.time%>">
+                                <a href="/cards/<%=card._id%>">
+                                    <img class="indexImgs" src="<%=card.coverPhoto%>" alt="<%=card.title%>">
+                                </a>
+                                <p class="halfway-fab btn-floating"> <i class="large material-icons <%=card.type%>Icon">
+                                        <% if (card.type === "nature") { %>
                                         park
-                                     <% } else { %>
+                                        <% } else { %>
                                         apartment
-                                    <%}%>
-                                        </i></p>
-                                </div>
-                                <h5><%=card.type%></h3>
-                                <br>
-                                <h5><%=card.time%></h3>
-                                <br>
-                                <p><%=card.flavorText%></p>
+                                        <%}%>
+                                    </i></p>
                             </div>
-                            <div class="card-action">
-                                <a href="/decks">Add to Deck</a>
-                                <a href="/decks">Add card to Favorites</a>
+                              
+                                    <span class="card-title">
+                                        <%=card.title%>
+                                    </span>
+                                    
+                                    <br>
+                                    <br>
+                             
+                                <div class="card-action">
+                                    <a class="btn-small purple" href="/decks">Deck <i class="material-icons right">add</i></a>
+                                    <a class="btn-small pink"href="/decks">Favorites <i class="material-icons right">add</i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <% }) %>
 
-            </div>
-        </div>
+                                </div>
+                            </div>
 
-       
-       
+
+
 
 
 
@@ -118,14 +119,14 @@
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-    })
-</script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        })
+    </script>
 </body>
 
 </html>

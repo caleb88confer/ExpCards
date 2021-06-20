@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,19 +9,23 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Exp Cards Register</title>
 </head>
+
 <body>
     <header class=" deep-orange lighten-3 white-text ">
         <h1 class="center-align" id="headerTitle">Register</h1>
     </header>
-    <form action="/users" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" />
-        
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" />
-    
-        <input type="submit" value="Register"> 
-    </form>
-    
+    <div class="container">
+        <form action="/users" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" />
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" />
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
 </body>
+
 </html>
