@@ -62,11 +62,48 @@
             </li>
         </ul>
 
-        
-        <a class="btn" href="/cards/<%=card._id%>/edit">Edit this card</a>
-        <form action="/cards/<%=card._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete this card" />
-        </form>
+        <div class="container">
+
+
+            <div class="row">
+
+                <div class="col s12 l6">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <%=card.title%>
+                            </span>
+                            <div class="card-image">
+
+                                <img src="<%=card.coverPhoto%>" alt="<%=card.title%>">
+
+                                <p class="halfway-fab btn-floating"> <i class="material-icons">
+                                        <% if (card.type === "nature") { %>
+                                        park
+                                        <% } else { %>
+                                        apartment
+                                        <%}%>
+                                        </i></p>
+                                </div>
+                                <h5><%=card.type%></h3>
+                                        <br>
+                                        <h5><%=card.time%></h3>
+                                            <br>
+                                            <p><%=card.flavorText%></p>
+                            </div>
+                            <div class="card-action">
+                                <a href="/decks">Add to Deck</a>
+                                <a href="/decks">Add card to Favorites</a>
+                                <a class="" href="/cards/<%=card._id%>/edit">Edit this card</a>
+                                <form action="/cards/<%=card._id%>?_method=DELETE" method="POST">
+                                    <input type="submit" value="Delete this card" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
     </main>
 

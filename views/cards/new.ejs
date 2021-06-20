@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css" />
     <title>Create New Card</title>
 </head>
+
 <body>
     <header class=" deep-orange lighten-3 white-text ">
         <h1 class="center-align headerTitle"> Create New Exp Card</h1>
@@ -56,71 +58,108 @@
 
         </li>
 
-    </ul> 
+    </ul>
     </nav>
-    <form action="/cards/" method="POST">
-        <input type="text" name="createdBy" id="createdByInput" value="<%=currentUser._id%>">
-        <label for="titleInput">Title</label>
-        <input type="text" name="title" id="titleInput">
-
-        <br>
 
 
-        
-        <br>
+    <div class="container">
+        <div class="row">
 
-        <label for="typeSelect">Type</label>
-    <select name="type" id="typeSelect">
-        <option value="nature">Nature</option>
-        <option value="urban">Urban</option>
-    </select>
 
-    <br />
+            <form enctype="multipart/form-data" action="/cards/" method="POST">
 
-    <label for="timeSelect">Time</label>
-    <select name="time" id="timeSelect">
-        <option value="dawn">Dawn</option>
-        <option value="dusk">Dusk</option>
-        <option value="day">Day</option>
-        <option value="night">Night</option>
-    </select>
+                <div class="col s12 l5">
 
-    <br />
+                    <input type="text" name="createdBy" id="createdByInput" value="<%=currentUser._id%>">
+                    <label for="titleInput">Title</label>
+                    <input type="text" name="title" id="titleInput">
 
-    <p>Stats:</p>
-    <label for="statsAdventure">Adventure</label>
-    <input type="number" name="stats.adventure" id="statsAdventure" min="0" max="10">
+                </div>
+                <br>
 
-    <br>
+                <div class="col s12 l5">
+                    <label for="coverPhoto">Photo</label>
+                    <input type="file" name="coverPhoto" id="coverPhoto">
+                </div>
 
-    <label for="statsCommunity">Community</label>
-    <input type="number" name="stats.community" id="statsCommunity" min="0" max="10">
+                <br>
 
-    <br>
+                <div class="input-field col s12 l5">
 
-    <label for="statsChallenge">Challenge</label>
-    <input type="number" name="stats.challenge" id="statsCommunity" min="0" max="10">
+                    <label for="typeSelect">Type</label>
+                    <br>
+                    <br>
+                    <select name="type" id="typeSelect">
+                        <option value="nature">Nature</option>
+                        <option value="urban">Urban</option>
+                    </select>
+                </div>
 
-    <br>
+                <br>
 
-    <label for="flavorText">Flavor Text</label>
-    <textarea name="flavorText" id="flavorText" cols="28" rows="3" maxlength="70"></textarea>
+                <div class="input-field col s12 l5">
 
-    <br>
+                    <label for="timeSelect">Time</label>
+                    <br>
+                    <br>
 
-    <input type="submit" value="Create Card">
+                    <select name="time" id="timeSelect">
+                        <option value="dawn">Dawn</option>
+                        <option value="dusk">Dusk</option>
+                        <option value="day">Day</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
 
-    </form>
-    
+                <br />
+
+                <div class="col s12 l5">
+                    <p>Card Stats:</p>
+                    <label for="statsAdventure">Adventure</label>
+                    <input placeholder="1-10" type="number" name="stats.adventure" id="statsAdventure" min="0" max="10">
+
+
+                    <br>
+
+                    <label for="statsCommunity">Community</label>
+                    <input placeholder="1-10" type="number" name="stats.community" id="statsCommunity" min="0" max="10">
+
+                    <br>
+
+                    <label for="statsChallenge">Challenge</label>
+                    <input placeholder="1-10" type="number" name="stats.challenge" id="statsCommunity" min="0" max="10">
+
+                </div>
+
+                <br>
+
+                <div class="col s12 l5">
+                    <label for="flavorText">Flavor Text</label>
+                    <textarea name="flavorText" id="flavorText" maxlength="70"></textarea>
+                </div>
+
+                <br>
+
+                <input type="submit" value="Create Card">
+
+            </form>
+        </div>
+
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-    })
-</script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
 </body>
+
 </html>

@@ -62,17 +62,57 @@
             </form>
 
         </ul>
+        
+        <div class="container">
 
-        <div class="col s9">
-            <% cards.forEach(card => { %>
-            <a href="/cards/<%=card._id%>"><%=card.title%></a>
-            <% }) %>
+
+            <div class="row">
+
+                <% cards.forEach(card => { %>
+                    
+                    <div class="col s12 l6">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">
+                                    <%=card.title%>
+                                </span>
+                                <div class="card-image">
+                                    <a href="/cards/<%=card._id%>">
+                                        <img src="<%=card.coverPhoto%>" alt="<%=card.title%>">
+                                     </a>
+                                    <p class="halfway-fab btn-floating"> <i class="material-icons"> <% if (card.type === "nature") { %>
+                                        park
+                                     <% } else { %>
+                                        apartment
+                                    <%}%>
+                                        </i></p>
+                                </div>
+                                <h5><%=card.type%></h3>
+                                <br>
+                                <h5><%=card.time%></h3>
+                                <br>
+                                <p><%=card.flavorText%></p>
+                            </div>
+                            <div class="card-action">
+                                <a href="/decks">Add to Deck</a>
+                                <a href="/decks">Add card to Favorites</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
+            </div>
         </div>
-        </div>
+
+       
+       
 
 
 
     </main>
+
+
 
 
 

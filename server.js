@@ -3,6 +3,7 @@ require('dotenv').config();
 const { config } = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.set('view engine', 'ejs');
 //HOME ROUTE ==========================================
 //MOUNTING MIDDLEWARE =================================
 //middleware for css
+app.use(fileUpload({ createParentPath: true}));
 app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: false}));
